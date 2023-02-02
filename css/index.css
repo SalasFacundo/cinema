@@ -4,9 +4,29 @@
     padding: 0;
 }
 
+/* nav{
+    border: 4px solid red;
+}
+
+#izquierda{
+    border: 4px solid green;
+}
+
+#derecha{
+    border: 4px solid green;
+} 
+
+footer{
+    border: 4px solid red;   
+}
+
+main{
+    border: 4px solid blue;    
+}
+*/
+
 body{
     display: grid;
-    border: 1px solid red;
     
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 100px auto 100px;
@@ -16,17 +36,29 @@ body{
 nav{
     height: 100%;
     width: 100%;
-    border: 4px solid red;
+    color: red;
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
 }
 
+.modificarNavbar{
+    background-color: black;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+}
+
+.links a{
+    margin-right: 15px;
+}
+
 #izquierda{
     height: 100%;
     width: 100%;
-    border: 4px solid green;
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
@@ -34,9 +66,14 @@ nav{
 }
 
 main{
+    display: grid;
+    padding: 15px;
     height: 100%;
     width: 100%;
-    border: 4px solid blue;
+    background-color: black;
+    background-image: url("../img/popcornMini.png");
+    background-repeat: space;
+    grid-template-rows: 393px auto auto;
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 2;
@@ -46,7 +83,6 @@ main{
 #derecha{
     height: 100%;
     width: 100%;
-    border: 4px solid green;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 2;
@@ -56,9 +92,80 @@ main{
 footer{
     height: 100%;
     width: 100%;
-    border: 4px solid red;
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4;
+}
+
+/* estructuracion css grid fin */
+
+#controles{
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+    background-color: rgb(1, 14, 23);
+}
+
+.select{
+    width: 30%;
+    margin-right: 30px;
+    background-color: grey;
+    text-align: right;
+    color: white;
+    border: none;
+}
+option{
+    color: white;
+    background-color: grey;
+}
+
+
+#botones{
+    display: flex;
+    width: 50%;
+    justify-content: end;
+}
+
+.botonPaginado{
+    margin-left: 5px;
+}
+
+.modificarCarrusel{
+    width: 100%;
+    height:300px;
+    background-color: red;
+}
+
+#novedades{
+    float: left;
+    background-color: red;
+    width: auto;
+}
+
+.title{
+    height: auto;
+    width: 100%;
+    margin: 15px 0;
+    padding: 10px;
+    color: white;
+    background-color: rgb(1, 14, 23);
+}
+
+small{
+    display: block;
+    width: 100%;
+}
+
+small i{
+    color: red;
+}
+
+.modificarFlechasCarruselCartelera{
+    background-color: rgb(1, 14, 23);
+}
+.modificarCarruselCartelera{
+    background-color: black;
+    border-radius: 3px;
+    color: white;
 }
