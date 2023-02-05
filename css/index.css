@@ -166,7 +166,7 @@ option{
 .probando{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 4fr));
-    gap: 10px;
+    gap: 40px;
 }
 
 small{
@@ -225,7 +225,7 @@ background: linear-gradient(270deg, rgba(0,0,0,0.8715861344537815) 0%, rgba(0,0,
 }
 
 .modificarCarruselEstreno small{
-    color: black ;
+    color: white ;
 }
 
 .flechitasCarrusel{
@@ -242,4 +242,8 @@ background: linear-gradient(270deg, rgba(0,0,0,0.8715861344537815) 0%, rgba(0,0,
     width: 36%;
     border-radius: 10%;    
     background-color: black;
+}
+
+.modificarCarruselEstreno{
+    background-color: rgb(1, 14, 23);    
 }
