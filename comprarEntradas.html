@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comprarEntradas.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark modificarNavbar">
+        <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse  links" id="navbarSupportedContent">
+            <div>
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item active space">
+                        <a class="nav-link " href="index.html" target="_parent">Inicio</a>
+                    </li>
+                    <li class="nav-item active space">
+                        <a class="nav-link" href="cartelera.html" target="_parent">Cartelera</a>
+                    </li>
+                    <li class="nav-item active space">
+                        <a class="nav-link" href="sucursales.html" target="_parent">Sucursales</a>
+                    </li>
+                    <li class="nav-item active space">
+                        <a class="nav-link" href="comprarEntradas.html" target="_parent">Comprar Entradas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="izquierda"></section>
+    <main>
+        <div class="title">Comprar tickets</div>
+        <form id="comprarEntradas">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Ciudad</label>
+                    <select id="inputState" class="form-control">                        
+                        <option selected="true">Mar del Plata</option>
+                        <option>Bahia Blanca</option>
+                        <option>Miramar</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Sucursal</label>
+                    <select id="inputState" class="form-control">
+                        <option selected="true">Shopping Los gallegos</option>
+                        <option>Paseo Diagonal</option>
+                        <option>Aldrey</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">Pelicula</label>
+                    <select id="inputState" class="form-control">
+                        <option selected="true">Avatar: El camino del agua</option>
+                        <option>El gato con botas 2</option>
+                        <option>Ant-Man 3: Quantumania</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Funcion</label>
+                    <select id="inputState" class="form-control">
+                        <option selected="true">6/2/2023 13:15</option>
+                        <option>7/2/2023 13:15</option>
+                        <option>8/2/2023 13:15</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputState">Otro</label>
+                    <select id="inputState" class="form-control">
+                        <option selected="true">2D</option>
+                        <option>3D</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Tarjeta</label>
+                    <select id="inputState" class="form-control">
+                        <option selected="true">VISA</option>
+                        <option>MASTERCARD</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Tipo</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Debito</option>
+                        <option>Credito</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Cuotas</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>1</option>
+                        <option>3</option>
+                        <option>6</option>
+                        <option>12</option>
+                    </select>
+                </div>
+                
+
+                <div class="row justify-content-center numerosTarjeta">
+                    <div class="form-group col-md-12">
+                        <label for="">Numero</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="number" name="" id="">
+                    </div>-
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="number" name="" id="">
+                    </div>-
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="number" name="" id="">
+                    </div>-
+                    <div class="form-group col-md-2">
+                        <input class="form-control" type="number" name="" id="">
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block text-muted small-font"> Mes y año de vencimiento</span>
+                            <input type="month" class="form-control" placeholder="MM" />
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block text-muted small-font"> CCV</span>
+                            <input type="text" class="form-control" placeholder="CCV" />
+                        </div>
+                        <!--  <div class="col-md-3 col-sm-3 col-xs-3">
+                                                <img src="assets/img/1.png" class="img-rounded" />
+                                            </div> -->
+                    </div>
+                        <div class="row m-5">
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-warning btn-block" value="CONFIRMAR" />
+                            </div>
+                        </div>
+                </div>
+        </form>
+    </main>
+    <section id="derecha"></section>
+
+    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+        <div class="container pt-4">
+            <section>
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-facebook"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-twitter"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-youtube"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-instagram"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-linkedin"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fa fa-github"></i></a>
+            </section>
+        </div>
+        <div class="text-center text-dark" style="background-color: rgba(0, 0, 0, 1);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">SalasFacundo</a>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+
+</html>

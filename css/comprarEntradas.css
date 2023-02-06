@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#comprarEntradas{
+    color: white;
+    padding: 15px;
+    background-color: rgba(16, 35, 48, 0.6);
+    margin: auto 0;
+}
+
+.title{
+    margin: auto;
+}
+
+input{
+    width: 100%;
+}
+
+.numerosTarjeta {
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
