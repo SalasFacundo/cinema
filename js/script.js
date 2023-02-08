@@ -6,44 +6,61 @@ let numeroTarjeta;
 let vencimiento;
 let numeroSeguridad;
 let validacion = false;
+let capacidadSala= 100;
 
 do {
+    cantidad = prompt("Ingrese cantidad de tickets ($"+valor+"c/u)");
+    validacion = !isEmpty(cantidad) && isNumber(cantidad) && isValidCapacidad(cantidad);
+} while (!validacion);
+do {
     tarjeta = prompt("Ingrese tarjeta VISA/MASTERCARD");
-    validacion = isEmpty(tarjeta) || isNumber(tarjeta) || !isValidCard(tarjeta);
-} while (validacion);
+    validacion = !isEmpty(tarjeta) && !isNumber(tarjeta) && isValidCard(tarjeta);
+} while (!validacion);
 do {
     tipo = prompt("Ingrese tipo de tarjeta DEBITO/CREDITO");
-    validacion = isEmpty(tipo) || isNumber(tipo) || !isValidTypeOfCard(tipo);
-} while (validacion);
+    validacion = !isEmpty(tipo) && !isNumber(tipo) && isValidTypeOfCard(tipo);
+} while (!validacion);
+
 if (tipo.toUpperCase() == "CREDITO") {
     do {
         cuotas = prompt("Ingrese cantidad de cuotas 1-3-6-12");
-        validacion = isEmpty(cuotas) || !isNumber(cuotas) || !isValidInstallment(cuotas);
-    } while (validacion);
+        validacion = !isEmpty(cuotas) && isNumber(cuotas) && isValidInstallment(cuotas);
+    } while (!validacion);
 }
 do {
-    numeroTarjeta = prompt("Ingrese numero de tarjeta");
-    validacion = isEmpty(numeroTarjeta) || !isNumber(numeroTarjeta) || !isValidDigits(numeroTarjeta, 16);
-} while (validacion);
+    numeroTarjeta = prompt("Ingrese numero de tarjeta sin espacios  ni guiones");
+    validacion = !isEmpty(numeroTarjeta) && isNumber(numeroTarjeta) && isValidDigits(numeroTarjeta, 16);
+} while (!validacion);
 do {
     vencimiento = prompt("Ingrese mes y año de vencimiento en formado dd-yy");
-    validacion = isEmpty(vencimiento) || !isValidDigits(vencimiento, 5);
-} while (validacion);
+    validacion = !isEmpty(vencimiento) && isValidDigits(vencimiento, 5);
+} while (!validacion);
 do {
     numeroSeguridad = prompt("Ingrese numero de seguridad");
-    validacion = isEmpty(numeroSeguridad) || !isValidDigits(numeroSeguridad, 3);
-} while (validacion);
+    validacion = !isEmpty(numeroSeguridad) && isValidDigits(numeroSeguridad, 3);
+} while (!validacion);
 
-if(!validacion){
-    confirm("El monto total es de: "+ calcularInteres(valor, cuotas))
+if(validacion){
+    let precioTicket = 500;
+    let precioFinal=500;
+    let mensaje = " Precio de ticket: $" +precioTicket + "\n Cantidad: "+ cantidad;
+
+    if(tipo.toUpperCase() == "CREDITO"){
+        precioFinal = calcularInteres(valor*cantidad, cuotas);
+        mensaje += "\n Cuotas: "+ cuotas;
+    } else {
+        precioFinal = valor * cantidad;
+    }
+    mensaje += "\n Precio final: $" + precioFinal;
+
+    if(confirm(mensaje)){
+        mensaje = "¡ Entradas acompradas con exito !";
+    } else {
+        mensaje = "Compra cancelada";
+    }
+
+    alert(mensaje);
 }
-console.log("Tarjeta:" + tarjeta);
-console.log("Tipo:" + tipo);
-console.log("Cuotas:" + cuotas);
-console.log("Numero de tarjeta:" + numeroTarjeta);
-console.log("Vencimiento:" + vencimiento);
-console.log("Numero de seguridad:" + numeroSeguridad);
-console.log("VALIDACION: "+validacion)
 
 function isEmpty(dato) {
     if (dato.trim() == "") {
@@ -61,14 +78,14 @@ function isNumber(dato) {
 
 function isValidCard(dato){
     if(dato.toUpperCase() == "MASTERCARD" || dato.toUpperCase() == "VISA"){
-        return isValidCard;
+        return true;
     }
     return false;
 }
 
 function isValidTypeOfCard(dato){
     if(dato.toUpperCase() == "DEBITO" || dato.toUpperCase() == "CREDITO"){
-        return isValidCard;
+        return true;
     }
     return false;
 }
@@ -81,6 +98,13 @@ function isValidInstallment(dato) {
 
 function isValidDigits(dato, cantidad) {
     if (dato.length != cantidad) {
+        return false;
+    }
+    return true;
+}
+
+function isValidCapacidad(dato) {
+    if (dato > capacidadSala) {
         return false;
     }
     return true;
