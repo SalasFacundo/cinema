@@ -4,7 +4,25 @@
     padding: 0;
 }
 
+.aviso{
+    position: absolute;
+    top: 110px;
+    height: 180px;
+    width: 97%;
+    background-color: black;
+    z-index: 3;
+    text-align: center;
+    margin: auto;
+    line-height: 40px;
+    color: red;
+}
+
+.aviso p{
+    margin: 30px;
+}
+
 #comprarEntradas{
+    position: relative;
     color: white;
     padding: 15px;
     background-color: rgba(16, 35, 48, 0.6);
@@ -25,8 +43,8 @@ input{
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 
 input[type=number] { -moz-appearance:textfield; }
