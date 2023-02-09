@@ -1,4 +1,7 @@
 const valor = 500;
+const capacidadSala = 100;
+
+let cantidad;
 let tarjeta;
 let tipo;
 let cuotas;
@@ -6,7 +9,6 @@ let numeroTarjeta;
 let vencimiento;
 let numeroSeguridad;
 let validacion = false;
-let capacidadSala = 100;
 
 do {
     cantidad = prompt("Ingrese cantidad de tickets ($" + valor + "c/u)");
