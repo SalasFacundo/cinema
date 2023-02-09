@@ -6,10 +6,10 @@ let numeroTarjeta;
 let vencimiento;
 let numeroSeguridad;
 let validacion = false;
-let capacidadSala= 100;
+let capacidadSala = 100;
 
 do {
-    cantidad = prompt("Ingrese cantidad de tickets ($"+valor+"c/u)");
+    cantidad = prompt("Ingrese cantidad de tickets ($" + valor + "c/u)");
     validacion = !isEmpty(cantidad) && isNumber(cantidad) && isValidCapacidad(cantidad);
 } while (!validacion);
 do {
@@ -20,7 +20,6 @@ do {
     tipo = prompt("Ingrese tipo de tarjeta DEBITO/CREDITO");
     validacion = !isEmpty(tipo) && !isNumber(tipo) && isValidTypeOfCard(tipo);
 } while (!validacion);
-
 if (tipo.toUpperCase() == "CREDITO") {
     do {
         cuotas = prompt("Ingrese cantidad de cuotas 1-3-6-12");
@@ -40,20 +39,20 @@ do {
     validacion = !isEmpty(numeroSeguridad) && isValidDigits(numeroSeguridad, 3);
 } while (!validacion);
 
-if(validacion){
+if (validacion) {
     let precioTicket = 500;
-    let precioFinal=500;
-    let mensaje = " Precio de ticket: $" +precioTicket + "\n Cantidad: "+ cantidad;
+    let precioFinal = 500;
+    let mensaje = " Precio de ticket: $" + precioTicket + "\n Cantidad: " + cantidad;
 
-    if(tipo.toUpperCase() == "CREDITO"){
-        precioFinal = calcularInteres(valor*cantidad, cuotas);
-        mensaje += "\n Cuotas: "+ cuotas;
+    if (tipo.toUpperCase() == "CREDITO") {
+        precioFinal = calcularInteres(valor * cantidad, cuotas);
+        mensaje += "\n Cuotas: " + cuotas;
     } else {
         precioFinal = valor * cantidad;
     }
     mensaje += "\n Precio final: $" + precioFinal;
 
-    if(confirm(mensaje)){
+    if (confirm(mensaje)) {
         mensaje = "¡ Entradas acompradas con exito !";
     } else {
         mensaje = "Compra cancelada";
@@ -76,15 +75,15 @@ function isNumber(dato) {
     return true;
 }
 
-function isValidCard(dato){
-    if(dato.toUpperCase() == "MASTERCARD" || dato.toUpperCase() == "VISA"){
+function isValidCard(dato) {
+    if (dato.toUpperCase() == "MASTERCARD" || dato.toUpperCase() == "VISA") {
         return true;
     }
     return false;
 }
 
-function isValidTypeOfCard(dato){
-    if(dato.toUpperCase() == "DEBITO" || dato.toUpperCase() == "CREDITO"){
+function isValidTypeOfCard(dato) {
+    if (dato.toUpperCase() == "DEBITO" || dato.toUpperCase() == "CREDITO") {
         return true;
     }
     return false;
@@ -113,7 +112,7 @@ function isValidCapacidad(dato) {
 function calcularInteres(valor, cuotas) {
     switch (cuotas) {
         case '1':
-            return valor; 
+            return valor;
             break;
         case '3':
             return valor * 1.12;
