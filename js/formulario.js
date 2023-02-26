@@ -15,19 +15,12 @@ class Ticket{
 
 ticket = new Ticket();
 
-let form = document.querySelector('.formulario');
 let barraProgreso = document.querySelectorAll('.barra__option');
-form.addEventListener('click', formControllers);
-let tarjetaConfirmar = document.querySelector('#tarjetaConfirmar');
-    tarjetaConfirmar.addEventListener("click", validarTarjeta);
-
-
-
-let cine = {
-    valorTicket: 500
-}
-
+let valorTicket= 500;
 let ticketMap= [];
+
+document.querySelector('.formulario').addEventListener('click', formControllers);
+document.querySelector('#tarjetaConfirmar').addEventListener("click", validarTarjeta);
 
 function formControllers(e) {
     let elemento = e.target;
@@ -84,13 +77,9 @@ function buildSeats(){
 function buildResume(){
     chosenSeats();
     crearArrayMap();
-    
-    
+
     let resumen = document.querySelector("#confirmResumen");
     let template ="";
-
-    console.log("dentro de build resume")
-    console.log(ticketMap)
 
     for (var key of Object.keys(ticketMap)) {
         template += `
@@ -100,10 +89,7 @@ function buildResume(){
             </div>
         `
     }
-    resumen.innerHTML = template;   
-    
-    console.log("TICKET FINAL");
-    console.log(ticket)
+    resumen.innerHTML = template;
 }
 
 function crearArrayMap(){
@@ -133,10 +119,10 @@ function crearArrayMap(){
     values.push(ticket.cuotas);
 
     keys.push("Precio en 1 pago");
-    values.push(calcularInteres(cine.valorTicket * ticket.cantidad, 1));
+    values.push(calcularInteres(valorTicket * ticket.cantidad, 1));
 
     keys.push("Precio Final");
-    values.push(calcularInteres(cine.valorTicket * ticket.cantidad, ticket.cuotas));
+    values.push(calcularInteres(valorTicket * ticket.cantidad, ticket.cuotas));
 
     for(var i = 0; i < keys.length; i++){
         ticketMap[keys[i]] = values[i];
