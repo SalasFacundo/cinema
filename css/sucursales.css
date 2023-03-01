@@ -14,18 +14,18 @@ iframe{
     gap: 15px;
 }
 
-.card-body{
+.card{
+    max-height: 240px;
+}
+.card__body{
     height: 100px !important;
     margin: auto;
     text-align: center;
 }
 
-.card-text{
+.card__text{
 }
 
-.card{
-    max-height: 240px;
-}
 
 .title__span{
     color: red;
