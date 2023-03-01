@@ -17,6 +17,7 @@
 .formulario {
     padding: 20px 15px;
     width: 100%;
+    
     max-width: 620px;
 }
 
@@ -170,4 +171,13 @@
     to {
         transform: scale(1.1);
     }
+}
+
+main{
+    min-width: 352px;
+    height: auto;
+}
+
+.formulario__body{
+    height: auto;
 }

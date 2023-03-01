@@ -18,3 +18,12 @@
 .title{
     margin: 60px 0 120px 0;
 }
+
+main{
+    min-width: 352px;
+    height: auto;
+}
+
+.formulario__body{
+    height: auto;
+}

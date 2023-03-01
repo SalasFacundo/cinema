@@ -65,7 +65,7 @@ main {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
-    min-width: 960px;
+    min-width: 465px;
 }
 
 body {
@@ -239,6 +239,10 @@ button {
     height: 100vh;
     width: 100vw;
     transition: opacity 0.3s ease;
+}
+
+.cardPremiere:hover{
+    cursor: pointer;
 }
 
 .show {

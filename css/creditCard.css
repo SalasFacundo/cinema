@@ -90,3 +90,13 @@ border-radius: 10px;
 input{
     padding: 10000px;
 }
+
+@media (width < 1188px){
+    .tarjeta{
+        display: none;
+    }
+    .fondo{
+        display: none;
+    }
+
+}
