@@ -28,6 +28,7 @@ document.getElementById('cancelarCompraModal').addEventListener('click', () => {
 document.getElementById('confirmarCompraModal').addEventListener('click', () => { window.localStorage.clear();location.reload();});
 document.getElementById('cerrarModal').addEventListener('click', () => { modal_container.classList.remove('show')});
 
+setMinMonth();
 hiddenWarningPending();
 
 
@@ -198,8 +199,6 @@ function validarTarjeta(event){
         document.querySelector("#errorNombre").innerHTML = "";
     }
     if(isEmpty(ticket.numeroTarjeta) || !isValidDigits(ticket.numeroTarjeta,16) || !isNumber(ticket.numeroTarjeta)){
-        console.log("numero tarjeta")
-        console.log(ticket.numeroTarjeta)
         document.querySelector("#errorNumero").innerHTML = "Numero de tarjeta invalido";
         errores++;
     }else{
@@ -291,8 +290,6 @@ function converRowFromSeatsToLetters(seats){
 
 function local_storage(){
 
-    console.log("el ticket es")
-    console.log(ticket)
     let ticketLocal = ticket;
 
     delete ticketLocal.nombreTarjeta;
@@ -302,12 +299,10 @@ function local_storage(){
     delete ticketLocal.tipoTarjeta;
 
     window.localStorage.setItem('ticket', JSON.stringify(ticketLocal));
-    console.log(localStorage)
 }
 
 function cargarModal(){        
     ticketJson = JSON.parse(window.localStorage.getItem('ticket'));
-    console.log(window.localStorage.getItem('ticket'))
 
     let title = "Compra pendiente"
     let subtitle =
@@ -330,15 +325,18 @@ function cargarModal(){
 function hiddenWarningPending(){
     
     let warningPending = document.querySelector('#warningPending');
-    console.log("local storage")
-    console.log(window.localStorage.getItem('ticket'))
     if(window.localStorage.getItem('ticket') == null){
-        console.log("empty")
         warningPending.classList.add('hidden')
     }
-    else{            
-        console.log("not empty")
+    else{
         warningPending.classList.remove('hidden')
     }
     
+}
+
+function setMinMonth(){
+    let date = new Date();
+    let monthPlus=date.getMonth()+1;
+    let month = String(monthPlus).length == 1 ? "0"+monthPlus:monthPlus;
+    document.getElementById('vencimientoTarjeta').min = date.getFullYear()+'-'+month;
 }
