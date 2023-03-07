@@ -24,8 +24,8 @@ document.querySelector('#tarjetaConfirmar').addEventListener("click", validarTar
 document.querySelector('#finalizePurchase').addEventListener("click", finalizePurchase);
 const modal_container = document.getElementById('modal_container');
 document.getElementsByClassName('open')[0].addEventListener('click', () => {cargarModal();modal_container.classList.add('show')});
-document.getElementById('cancelarCompraModal').addEventListener('click', () => { window.localStorage.clear();location.reload();});
-document.getElementById('confirmarCompraModal').addEventListener('click', () => { window.localStorage.clear();location.reload();});
+document.getElementById('cancelarCompraModal').addEventListener('click', cancelPurchase);
+document.getElementById('confirmarCompraModal').addEventListener('click',confirmPurchase);
 document.getElementById('cerrarModal').addEventListener('click', () => { modal_container.classList.remove('show')});
 
 setMinMonth();
@@ -339,4 +339,19 @@ function setMinMonth(){
     let monthPlus=date.getMonth()+1;
     let month = String(monthPlus).length == 1 ? "0"+monthPlus:monthPlus;
     document.getElementById('vencimientoTarjeta').min = date.getFullYear()+'-'+month;
+}
+
+function finalizePurchase(){
+    window.localStorage.clear();
+}
+
+function cancelPurchase(){
+    window.localStorage.clear();
+    location.reload();
+    alert("La compra fue cancelada con exito");
+}
+function confirmPurchase(){
+    window.localStorage.clear();
+    location.reload();
+    alert("La compra fue confirmada con exito")
 }
