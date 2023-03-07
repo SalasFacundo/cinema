@@ -16,7 +16,8 @@ var values = [
 let keyMap = {};
 builKeyMap();
 
-
+console.log("LOCAL STORAGE")
+console.log(localStorage)
 
 
 close.addEventListener('click', () => {

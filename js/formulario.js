@@ -11,6 +11,7 @@ class Ticket{
     cuotas;
     butacas;
     cantidad;
+    precioFinal
 }
 
 ticket = new Ticket();
@@ -20,6 +21,16 @@ let ticketMap= [];
 
 document.querySelector('.formulario').addEventListener('click', formControllers);
 document.querySelector('#tarjetaConfirmar').addEventListener("click", validarTarjeta);
+document.querySelector('#finalizePurchase').addEventListener("click", finalizePurchase);
+const modal_container = document.getElementById('modal_container');
+document.getElementsByClassName('open')[0].addEventListener('click', () => {cargarModal();modal_container.classList.add('show')});
+document.getElementById('cancelarCompraModal').addEventListener('click', () => { window.localStorage.clear();location.reload();});
+document.getElementById('confirmarCompraModal').addEventListener('click', () => { window.localStorage.clear();location.reload();});
+document.getElementById('cerrarModal').addEventListener('click', () => { modal_container.classList.remove('show')});
+
+hiddenWarningPending();
+
+
 
 function formControllers(e) {
     let elemento = e.target;
@@ -73,6 +84,8 @@ function buildSeats(){
 function buildResume(){
     chosenSeats();
     crearArrayMap();
+    
+    local_storage();
 
     let resumen = document.querySelector("#confirmResumen");
     let template ="";
@@ -118,7 +131,8 @@ function crearArrayMap(){
     values.push(calcularInteres(valorTicket * ticket.cantidad, 1));
 
     keys.push("Precio Final");
-    values.push(calcularInteres(valorTicket * ticket.cantidad, ticket.cuotas));
+    ticket.precioFinal = calcularInteres(valorTicket * ticket.cantidad, ticket.cuotas);
+    values.push(ticket.precioFinal);
 
     for(var i = 0; i < keys.length; i++){
         ticketMap[keys[i]] = values[i];
@@ -169,7 +183,7 @@ function validarTarjeta(event){
         funcion: document.getElementById("funcion").value,
         otro: document.getElementById("otro").value,
         nombreTarjeta: document.getElementById("nombreTarjeta").value,
-        numeroTarjeta: document.getElementById("numeroTarjeta").value,
+        numeroTarjeta: document.getElementById("numeroTarjeta").value.split(" ").join(""),
         vencimientoTarjeta: document.getElementById("vencimientoTarjeta").value,
         seguridadTarjeta: document.getElementById("seguridadTarjeta").value,
         tipoTarjeta: document.getElementById("tipoTarjeta").value,
@@ -183,7 +197,9 @@ function validarTarjeta(event){
     }else{
         document.querySelector("#errorNombre").innerHTML = "";
     }
-    if(isEmpty(ticket.numeroTarjeta) || !isValidDigits(ticket.numeroTarjeta,19) || !isNumber(ticket.numeroTarjeta)){
+    if(isEmpty(ticket.numeroTarjeta) || !isValidDigits(ticket.numeroTarjeta,16) || !isNumber(ticket.numeroTarjeta)){
+        console.log("numero tarjeta")
+        console.log(ticket.numeroTarjeta)
         document.querySelector("#errorNumero").innerHTML = "Numero de tarjeta invalido";
         errores++;
     }else{
@@ -271,4 +287,58 @@ function converRowFromSeatsToLetters(seats){
         });
 
     return letterSeats;
+}
+
+function local_storage(){
+
+    console.log("el ticket es")
+    console.log(ticket)
+    let ticketLocal = ticket;
+
+    delete ticketLocal.nombreTarjeta;
+    ticketLocal.numeroTarjeta = ticket.numeroTarjeta.substring(12,ticket.numeroTarjeta.length);
+    delete ticketLocal.vencimientoTarjeta;
+    delete ticketLocal.seguridadTarjeta;
+    delete ticketLocal.tipoTarjeta;
+
+    window.localStorage.setItem('ticket', JSON.stringify(ticketLocal));
+    console.log(localStorage)
+}
+
+function cargarModal(){        
+    ticketJson = JSON.parse(window.localStorage.getItem('ticket'));
+    console.log(window.localStorage.getItem('ticket'))
+
+    let title = "Compra pendiente"
+    let subtitle =
+    `
+    Ciudad: ${ticketJson.ciudad}\n
+    Sucursal: ${ticketJson.sucursal}\n
+    Pelicula: ${ticketJson.pelicula}\n
+    Funcion: ${ticketJson.funcion}\n
+    Butacas: ${ticketJson.butacas}\n
+    Cantidad: ${ticketJson.cantidad}\n
+    Precio final: ${ticketJson.precioFinal}\n
+    Ultimos 4 numeros de la tarjeta: ${ticketJson.numeroTarjeta}\n
+    Cuotas: ${ticketJson.cuotas}\n
+    Otro: ${ticketJson.otro}\n
+    `;
+    document.getElementById("tituloModal").innerText = title;
+    document.getElementById("detalleModal").innerText = subtitle;        
+}
+
+function hiddenWarningPending(){
+    
+    let warningPending = document.querySelector('#warningPending');
+    console.log("local storage")
+    console.log(window.localStorage.getItem('ticket'))
+    if(window.localStorage.getItem('ticket') == null){
+        console.log("empty")
+        warningPending.classList.add('hidden')
+    }
+    else{            
+        console.log("not empty")
+        warningPending.classList.remove('hidden')
+    }
+    
 }
