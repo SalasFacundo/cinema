@@ -113,7 +113,7 @@ function crearArrayMap(){
 
     keys.push("Cuotas");
     values.push(ticket.cuotas);
-
+    
     keys.push("Precio en 1 pago");
     values.push(calcularInteres(valorTicket * ticket.cantidad, 1));
 
@@ -157,7 +157,7 @@ function chosenSeats(){
     for (let i = 0; i < butacas.length; i++) {        
         resultado.push(butacas[i].id);
     }
-    ticket.butacas = resultado;
+    ticket.butacas = converRowFromSeatsToLetters(resultado);
     ticket.cantidad = resultado.length;
 }
 
@@ -258,4 +258,17 @@ function calcularInteres(valor, cuotas) {
             break;
     }
     return valor;
+}
+
+function converRowFromSeatsToLetters(seats){
+    
+    letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ', 'O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    
+    let letterSeats = seats.map(e =>{ 
+        array = e.split('-');
+        array[0] = letras[array[0]-1];
+        return array[0]+"-"+array[1];
+        });
+
+    return letterSeats;
 }
