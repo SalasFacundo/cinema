@@ -68,6 +68,10 @@ main{
 	cursor: pointer
 }
 
+.boton{
+	cursor: pointer;
+}
+
 @keyframes alerta {
 	0%,
 	100% {
