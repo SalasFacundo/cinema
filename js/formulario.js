@@ -15,7 +15,6 @@ class Ticket{
 
 ticket = new Ticket();
 
-let barraProgreso = document.querySelectorAll('.barra__option');
 let valorTicket= 500;
 let ticketMap= [];
 
@@ -39,11 +38,8 @@ function formControllers(e) {
             });
             if (isButtonNext) {
                 pasoActual.classList.add('to-left');
-                barraProgreso[elemento.dataset.to_step - 1].classList.add('active');
             } else {
-                cambiarPaso.classList.remove('to-left');
-                barraProgreso[elemento.dataset.step - 1].classList.remove('active');
-                
+                cambiarPaso.classList.remove('to-left');                
             }
             pasoActual.removeEventListener('animationend', callback);
         });
@@ -181,7 +177,7 @@ function validarTarjeta(event){
     }
     let errores = 0;
 
-    if(isEmpty(ticket.nombreTarjeta) || ticket.nombreTarjeta.length>=20){
+    if(isEmpty(ticket.nombreTarjeta) || ticket.nombreTarjeta.length>21){
         document.querySelector("#errorNombre").innerHTML = "Nombre invalido";
         errores++;
     }else{

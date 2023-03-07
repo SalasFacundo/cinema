@@ -4,8 +4,10 @@ iframe{
 }
 
 .title{
-    height: 50px;
+    margin: 60px 0 120px 0;
+    height: 44px;
 }
+
 .cards{
     display: flex;
     justify-content: center;

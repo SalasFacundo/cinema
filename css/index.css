@@ -171,17 +171,18 @@ small {
     position: absolute;
     width: 100%;
     height: auto;
-    padding: 30px 15px 0 0;
+    padding: 15px 15px 15px 0;
     background-color: red;
-    bottom: 0;
+    bottom: 10px;
     color: white;
     text-align: right;
     background: rgb(0, 0, 0);
     background: linear-gradient(270deg, rgba(0, 0, 0, 0.8715861344537815) 0%, rgba(0, 0, 0, 0.8407738095238095) 57%, rgba(122, 133, 135, 0) 100%);
 }
 
-.overlapping h6 {
-    color: grey;
+.overlapping span {
+    color: white;
+    font-size: 40px;
 }
 
 .modificarNewsCarousel {
@@ -205,7 +206,6 @@ small {
 }
 
 .carouselPremiereArrows {
-    margin: auto;
     height: 15%;
     width: 36%;
     border-radius: 10%;
@@ -267,4 +267,11 @@ button {
 #sinopsisModal{
     opacity: 0.7;
     font-size: 14px;
+}
+
+@media (width < 1348px){
+    .overlapping span {
+        font-size: 20px;
+    }
+
 }
