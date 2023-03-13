@@ -310,13 +310,13 @@ function cargarModal(){
     Ciudad: ${ticketJson.ciudad}\n
     Sucursal: ${ticketJson.sucursal}\n
     Pelicula: ${ticketJson.pelicula}\n
+    Otro: ${ticketJson.otro}\n
     Funcion: ${ticketJson.funcion}\n
     Butacas: ${ticketJson.butacas}\n
     Cantidad: ${ticketJson.cantidad}\n
-    Precio final: ${ticketJson.precioFinal}\n
-    Ultimos 4 numeros de la tarjeta: ${ticketJson.numeroTarjeta}\n
     Cuotas: ${ticketJson.cuotas}\n
-    Otro: ${ticketJson.otro}\n
+    Ultimos 4 numeros de la tarjeta: ${ticketJson.numeroTarjeta}\n
+    Precio final: ${ticketJson.precioFinal}\n
     `;
     document.getElementById("tituloModal").innerText = title;
     document.getElementById("detalleModal").innerText = subtitle;        
