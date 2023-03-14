@@ -5,8 +5,7 @@ const $numeroTarjeta = document.querySelector("#numeroTarjeta");
 const $vencimientoTarjeta = document.querySelector("#vencimientoTarjeta");
 const $seguridadTarjeta = document.querySelector("#seguridadTarjeta");
 
-
-
+writeTextCard();
 
 function writeTextCard() {
     const nombreTarjeta = document.querySelector(".nombre-tarjeta");
@@ -46,18 +45,12 @@ function writeTextCard() {
 
 }
 
-writeTextCard();
-
-
 function formatearInputMonth(valor){
     let separado = valor.split('-');
     return separado[1]+"-"+separado[0].slice(2);
 }
 
-
 function agregarEspacios(valor){
-    console.log("VALOR");
-    console.log(valor)
     if(valor.length == 4 || valor.length == 9 || valor.length == 14  ){
         return valor + " ";
     }

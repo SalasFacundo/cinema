@@ -30,14 +30,14 @@ document.getElementById('cerrarModal').addEventListener('click', () => { modal_c
 
 setMinMonth();
 hiddenWarningPending();
+buildSeats();
 
 
-
-function formControllers(e) {
+function formControllers(e) {    
     let elemento = e.target;
-    let isButtonNext = elemento.classList.contains('step__button--next');
-    let isButtonBack = elemento.classList.contains('step__button--back');
-    if (isButtonNext || isButtonBack) {
+    let isBotonSiguiente = elemento.classList.contains('step__button--next');
+    let isBotonAnterior = elemento.classList.contains('step__button--back');
+    if (isBotonSiguiente || isBotonAnterior) {
         let pasoActual = document.getElementById('step-' + elemento.dataset.step);
         let cambiarPaso = document.getElementById('step-' + elemento.dataset.to_step);
         pasoActual.addEventListener('animationend', function callback() {
@@ -48,10 +48,10 @@ function formControllers(e) {
                 left: 0,
                 behavior: 'smooth'
             });
-            if (isButtonNext) {
+            if (isBotonSiguiente) {
                 pasoActual.classList.add('to-left');
             } else {
-                cambiarPaso.classList.remove('to-left');                
+                cambiarPaso.classList.remove('to-left');
             }
             pasoActual.removeEventListener('animationend', callback);
         });
@@ -60,15 +60,14 @@ function formControllers(e) {
     }
 }
 
-buildSeats();
-
+//Creo butacas ocupadas al azar con una probabilidad del 50%, solo para pruebas
 function buildSeats(){
     let butacas = document.querySelector('.butacas');
     let filas = "";
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 10; i++) { //se indican la cantidad filas
         filas += `<div class="fila">`;
-        for (let j = 1; j <= 15; j++) {  
+        for (let j = 1; j <= 15; j++) {   //se indican la cantidad de columnas
             filas += `
                 <div class=${(Math.random() < 0.5) ? "disponible" : "ocupado"} id="${i}-${j}"  onclick="butacasAction(id)"></div>
             `;
@@ -84,8 +83,7 @@ function buildSeats(){
 
 function buildResume(){
     chosenSeats();
-    crearArrayMap();
-    
+    crearArrayMap();    
     local_storage();
 
     let resumen = document.querySelector("#confirmResumen");
@@ -275,6 +273,8 @@ function calcularInteres(valor, cuotas) {
     return valor;
 }
 
+// el ID de las butacas era en formato "5-5", lo que era confuso saber cual era columna y cual era fila
+//por lo que se convierte el primer numero a letra "E-5"
 function converRowFromSeatsToLetters(seats){
     
     letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ', 'O','P','Q','R','S','T','U','V','W','X','Y','Z']
@@ -343,6 +343,7 @@ function setMinMonth(){
 
 function finalizePurchase(){
     window.localStorage.clear();
+    alert("La compra fue confirmada con exito")
 }
 
 function cancelPurchase(){
