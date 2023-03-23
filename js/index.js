@@ -49,7 +49,7 @@ function fillCarousel(responseGenres, responseMovies){
 for (let i = 0; i < 4; i++) {
     secondPageHtml += `
     <div class="cardPremiere open">
-            <img class=" img-fluid triggerModal" src="https://image.tmdb.org/t/p/w500/${final[i].poster_path}" data-movie="${inicio[i].id}" alt="First slide">
+            <img class=" img-fluid triggerModal" src="https://image.tmdb.org/t/p/w500/${final[i].poster_path}" data-movie="${final[i].id}" alt="First slide">
             <small class="movieTitle">${final[i].title}</small>
             <small><i class="fa fa-star"></i><label>${findGenreById(responseGenres, final[i].genre_ids[0])}</label></small>
         </div>
