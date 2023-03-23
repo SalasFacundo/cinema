@@ -173,7 +173,15 @@ small {
 }
 
 .modifyPremiereCarousel small {
-    color: white;
+    color: white;   
+}
+.modifyPremiereCarousel label {
+    margin-left: 5px;  
+}
+.modifyPremiereCarousel img {
+    width: 200.38px;
+    height: 300.56px;
+
 }
 
 .carouselNewsArrows {
